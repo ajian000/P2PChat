@@ -9,7 +9,18 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const PORT = 3000;
+// 读取配置文件
+let config;
+try {
+    config = JSON.parse(fs.readFileSync('config.json', 'utf8'));
+} catch (error) {
+    console.warn('⚠️ 无法读取配置文件，使用默认配置');
+    config = {
+        port: 25554
+    };
+}
+
+const PORT = config.port;
 
 // 存储房间和用户信息
 const rooms = new Map(); // roomId -> Set of ws
@@ -238,6 +249,7 @@ server.listen(PORT, '0.0.0.0', () => {
     console.log('========================================');
     console.log(`  访问地址: http://localhost:${PORT}`);
     console.log(`  端口: ${PORT}`);
+    console.log(`  配置文件: config.json`);
     console.log('========================================');
     console.log('  提示: 生产环境请使用 HTTPS');
     console.log('========================================');
