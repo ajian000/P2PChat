@@ -1,0 +1,15 @@
+{
+  "name": "p2p-voice-chat",
+  "version": "1.0.0",
+  "description": "P2P 实时语音聊天室",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": ["webrtc", "voice", "chat", "p2p"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "ws": "^8.14.2"
+  }
+}
